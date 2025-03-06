@@ -1,19 +1,12 @@
 const express = require("express");
-const cors = require("cors");
-
 const app = express();
-app.use(cors());
+const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("Server is running...");
+  res.send("API is working!");
 });
 
-
-app.get("/download", async (req, res) => {
-  const url = req.query.url;
-  if (!url) return res.status(400).send("URL is required");
-
-  res.send({ message: "Download logic yaha implement karo" });
+// Start server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
-
-module.exports = app;
