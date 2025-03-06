@@ -4,7 +4,15 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-app.use("/download", require("./routes/download"));
-app.use("/info", require("./routes/info"));
+app.get("/", (req, res) => {
+  res.send("YouTube Video Downloader API is running!");
+});
 
-module.exports = app;  // Vercel ke liye ye zaroori hai
+app.get("/download", async (req, res) => {
+  const url = req.query.url;
+  if (!url) return res.status(400).send("URL is required");
+
+  res.send({ message: "Download logic yaha implement karo" });
+});
+
+module.exports = app;
