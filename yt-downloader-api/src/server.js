@@ -5,8 +5,9 @@ const app = express();
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("YouTube Video Downloader API is running!");
+  res.send("Server is running...");
 });
+
 
 app.get("/download", async (req, res) => {
   const url = req.query.url;
