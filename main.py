@@ -58,9 +58,10 @@ def get_info():
     url = request.args.get("url")
     if not url:
         return jsonify({"error": "Missing URL"}), 400
+        
+if "youtube.com" in url or "youtu.be" in url:
+    return download_youtube(url, quality, audio)
 
-    if "youtube.com" not in url:
-        return jsonify({"error": "Info only available for YouTube"}), 400
 
     ydl_opts = {
         "cookiefile": COOKIES_FILE,
